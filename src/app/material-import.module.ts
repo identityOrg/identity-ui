@@ -2,7 +2,7 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {
   MatButtonModule,
-  MatCardModule,
+  MatCardModule, MatDialogModule,
   MatIconModule,
   MatInputModule,
   MatPaginatorModule,
@@ -22,6 +22,7 @@ import {CdkTableModule} from '@angular/cdk/table';
     CdkTableModule,
     MatSortModule,
     MatPaginatorModule,
+    MatDialogModule
   ],
   exports: [
     CommonModule,
@@ -33,6 +34,7 @@ import {CdkTableModule} from '@angular/cdk/table';
     CdkTableModule,
     MatSortModule,
     MatPaginatorModule,
+    MatDialogModule
   ],
   declarations: []
 })

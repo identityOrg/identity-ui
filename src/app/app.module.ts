@@ -22,6 +22,8 @@ import {ScopeComponent} from './pages/scope/scope.component';
 import {PageNotFoundComponent} from './pages/page-not-found/page-not-found.component';
 import {ServiceModule} from './service/service.module';
 import {MaterialImportModule} from './material-import.module';
+import {EditScopeComponent} from './pages/scope/edit-scope/edit-scope.component';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -41,17 +43,20 @@ import {MaterialImportModule} from './material-import.module';
     LogoutComponent,
     CallbackComponent,
     ScopeComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    EditScopeComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialImportModule,
-    ServiceModule
+    ServiceModule,
+    FormsModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [EditScopeComponent]
 })
 export class AppModule {
 }

@@ -24,4 +24,25 @@ export class ScopeService {
     return this.http.get<Scope[]>(environment.apiBase + '/api/scope',
       {headers: this.loginService.getSecurityHeader(), params: param, observe: 'body'});
   }
+
+  getScope(scopeId: string): Observable<Scope> {
+    return this.http.get<Scope>(environment.apiBase + '/api/scope/' + scopeId, {
+      headers: this.loginService.getSecurityHeader(),
+      observe: 'body'
+    });
+  }
+
+  update(scope: Scope): Observable<Scope> {
+    return this.http.put<Scope>(environment.apiBase + '/api/scope/' + scope.scopeId, scope, {
+      headers: this.loginService.getSecurityHeader(),
+      observe: 'body'
+    });
+  }
+
+  create(scope: Scope): Observable<Scope> {
+    return this.http.post<Scope>(environment.apiBase + '/api/scope', scope, {
+      headers: this.loginService.getSecurityHeader(),
+      observe: 'body'
+    });
+  }
 }
