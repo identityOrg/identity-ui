@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ScopeService} from '../../service/scope.service';
 import {Scope} from '../../model/scope';
+import {MatTableDataSource} from '@angular/material';
 
 @Component({
   selector: 'app-scope',
@@ -9,7 +10,8 @@ import {Scope} from '../../model/scope';
 })
 export class ScopeComponent implements OnInit {
 
-  scopes: Scope[] = [];
+  displayedColumns = ['show', 'scopeId', 'scopeName', 'actions'];
+  dataSource: MatTableDataSource<Scope> = null;
 
   constructor(private scopeService: ScopeService) {
   }
@@ -17,9 +19,9 @@ export class ScopeComponent implements OnInit {
   ngOnInit() {
     this.scopeService.listScopes(null)
       .subscribe(data => {
-        this.scopes = data;
+        this.dataSource = new MatTableDataSource<Scope>(data);
       }, err => {
-        this.scopes = [];
+        this.dataSource = null;
         console.log(err);
       });
   }
