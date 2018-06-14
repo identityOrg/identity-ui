@@ -1,23 +1,17 @@
-<mat-card>
-  <mat-card-title>
-    Edit Scope
-  </mat-card-title>
-  <mat-card-content>
-    <mat-form-field class="full-width">
-      <input matInput placeholder="Scope ID" [disabled]="edit" [(ngModel)]="scope.scopeId">
-    </mat-form-field>
-    <mat-form-field class="full-width">
-      <input matInput placeholder="Scope Name" [(ngModel)]="scope.scopeName">
-    </mat-form-field>
-  </mat-card-content>
-  <mat-card-actions>
-    <div class="button-row">
-      <button mat-flat-button color="warn" (click)="close()">
-        Cancel
-      </button>
-      <button mat-flat-button color="primary" (click)="save()">
-        Save
-      </button>
-    </div>
-  </mat-card-actions>
-</mat-card>
+<h2 mat-dialog-title>{{title}}</h2>
+<mat-dialog-content>
+  <mat-form-field class="full-width">
+    <input matInput placeholder="Scope ID" [disabled]="edit" [(ngModel)]="scope.scopeId">
+  </mat-form-field>
+  <mat-form-field class="full-width">
+    <input matInput placeholder="Scope Name" [(ngModel)]="scope.scopeName">
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-flat-button color="warn" (click)="close()">
+    Cancel
+  </button>
+  <button mat-flat-button color="primary" (click)="save()">
+    Save
+  </button>
+</mat-dialog-actions>

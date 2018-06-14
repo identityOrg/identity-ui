@@ -10,6 +10,8 @@ import {Scope} from '../../../model/scope';
 })
 export class EditScopeComponent implements OnInit {
 
+  title: string;
+
   scope: Scope = {scopeId: null, scopeName: null};
 
   scopeId: string;
@@ -20,6 +22,11 @@ export class EditScopeComponent implements OnInit {
               @Inject(MAT_DIALOG_DATA) data) {
     this.scopeId = data.scopeId;
     this.edit = data.edit;
+    if (this.edit) {
+      this.title = 'Edit Scope';
+    } else {
+      this.title = 'Create Scope';
+    }
   }
 
   ngOnInit() {
