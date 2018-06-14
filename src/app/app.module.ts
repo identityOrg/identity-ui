@@ -3,11 +3,6 @@ import {NgModule} from '@angular/core';
 
 import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {
-  MatButtonModule,
-  MatCardModule, MatIconModule, MatInputModule, MatPaginatorModule, MatSortModule,
-  MatTableModule
-} from '@angular/material';
 import {NavComponent} from './layout/nav/nav.component';
 import {FooterComponent} from './layout/footer/footer.component';
 import {SideNavComponent} from './layout/side-nav/side-nav.component';
@@ -25,8 +20,8 @@ import {LogoutComponent} from './pages/logout/logout.component';
 import {CallbackComponent} from './security/callback/callback.component';
 import {ScopeComponent} from './pages/scope/scope.component';
 import {PageNotFoundComponent} from './pages/page-not-found/page-not-found.component';
-import {CdkTableModule} from '@angular/cdk/table';
 import {ServiceModule} from './service/service.module';
+import {MaterialImportModule} from './material-import.module';
 
 @NgModule({
   declarations: [
@@ -52,14 +47,7 @@ import {ServiceModule} from './service/service.module';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatInputModule,
-    MatTableModule,
-    MatCardModule,
-    MatIconModule,
-    MatButtonModule,
-    CdkTableModule,
-    MatSortModule,
-    MatPaginatorModule,
+    MaterialImportModule,
     ServiceModule
   ],
   providers: [],
