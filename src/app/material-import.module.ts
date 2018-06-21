@@ -2,10 +2,10 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {
   MatButtonModule,
-  MatCardModule, MatDialogModule,
+  MatCardModule, MatCheckboxModule, MatDialogModule, MatGridListModule,
   MatIconModule,
-  MatInputModule,
-  MatPaginatorModule,
+  MatInputModule, MatListModule,
+  MatPaginatorModule, MatSlideToggleModule,
   MatSortModule,
   MatTableModule
 } from '@angular/material';
@@ -22,7 +22,11 @@ import {CdkTableModule} from '@angular/cdk/table';
     CdkTableModule,
     MatSortModule,
     MatPaginatorModule,
-    MatDialogModule
+    MatDialogModule,
+    MatGridListModule,
+    MatListModule,
+    MatCheckboxModule,
+    MatSlideToggleModule
   ],
   exports: [
     CommonModule,
@@ -34,7 +38,11 @@ import {CdkTableModule} from '@angular/cdk/table';
     CdkTableModule,
     MatSortModule,
     MatPaginatorModule,
-    MatDialogModule
+    MatDialogModule,
+    MatGridListModule,
+    MatListModule,
+    MatCheckboxModule,
+    MatSlideToggleModule
   ],
   declarations: []
 })

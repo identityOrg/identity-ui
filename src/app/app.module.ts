@@ -24,6 +24,7 @@ import {ServiceModule} from './service/service.module';
 import {MaterialImportModule} from './material-import.module';
 import {EditScopeComponent} from './pages/scope/edit-scope/edit-scope.component';
 import {FormsModule} from '@angular/forms';
+import {ConfirmDialogComponent} from './confirm-dialog/confirm-dialog.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import {FormsModule} from '@angular/forms';
     CallbackComponent,
     ScopeComponent,
     PageNotFoundComponent,
-    EditScopeComponent
+    EditScopeComponent,
+    ConfirmDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +58,7 @@ import {FormsModule} from '@angular/forms';
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [EditScopeComponent]
+  entryComponents: [EditScopeComponent, ConfirmDialogComponent]
 })
 export class AppModule {
 }

@@ -10,7 +10,7 @@ import {MatTableDataSource} from '@angular/material';
 })
 export class ClientComponent implements OnInit {
 
-  displayedColumns = ['show', 'clientId', 'clientName', 'status', 'creationDate', 'expiryDate', 'actions'];
+  displayedColumns = ['show', 'actions', 'clientId', 'clientName', 'status', 'creationDate', 'expiryDate'];
   dataSource: MatTableDataSource<Client> = null;
 
   constructor(private clientService: ClientService) {

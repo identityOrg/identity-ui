@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
+import {ClientService} from '../../../service/client.service';
+import {Client} from "../../../model/client";
 
 @Component({
   selector: 'app-detail-client',
@@ -7,9 +10,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DetailClientComponent implements OnInit {
 
-  constructor() { }
+  client = {} as Client;
+
+  constructor(private activatedRoute: ActivatedRoute,
+              private clientService: ClientService) {
+  }
 
   ngOnInit() {
+    this.activatedRoute.paramMap
+      .subscribe(pMap => {
+        this.clientService.getClient(pMap.get('clientId'))
+          .subscribe(c => {
+            this.client = c;
+          }, error => {
+            console.log(error);
+          });
+      });
   }
 
 }

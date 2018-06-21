@@ -1,3 +1,58 @@
-<p>
-  edit-client works!
-</p>
+<div class="card" style="width: 100%">
+  <div class="card-body">
+    <h5 class="card-title" *ngIf="editMode == false">Show Client <span [class]="client.status === 'ACTIVE'? 'dot-active': 'dot-inactive'"></span></h5>
+    <h5 class="card-title" *ngIf="editMode">Edit Client <span [class]="client.status === 'ACTIVE'? 'dot-active': 'dot-inactive'"></span></h5>
+    <p class="card-text" *ngIf="editMode == false">Display Client details</p>
+    <p class="card-text" *ngIf="editMode">Edit Client details</p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Client ID" disabled [(ngModel)]="client.clientId">
+      </mat-form-field>
+    </li>
+    <li class="list-group-item">
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Client Name" [disabled]="editMode == false" [(ngModel)]="client.clientName">
+      </mat-form-field>
+    </li>
+    <li class="list-group-item">
+      <mat-form-field class="full-width">
+        <input matInput type="url" placeholder="Redirect URI" [disabled]="editMode == false"
+               [(ngModel)]="client.redirectUri">
+      </mat-form-field>
+    </li>
+    <li class="list-group-item">
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Creation Date" type="datetime-local" [disabled]="editMode == false"
+               [(ngModel)]="client.creationDate">
+      </mat-form-field>
+    </li>
+    <li class="list-group-item">
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Expiry Date" type="datetime-local" [disabled]="editMode == false"
+               [(ngModel)]="client.expiryDate">
+      </mat-form-field>
+    </li>
+    <li class="list-group-item">
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Access Token Validity" [disabled]="editMode == false"
+               [(ngModel)]="client.accessTokenValidity">
+      </mat-form-field>
+    </li>
+    <li class="list-group-item">
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Refresh Token Validity" [disabled]="editMode == false"
+               [(ngModel)]="client.refreshTokenValidity">
+      </mat-form-field>
+    </li>
+  </ul>
+  <div class="card-body">
+    <a href="#" class="card-link" *ngIf="editMode == false" [routerLink]="['/client', 'edit', client.clientId]">Edit
+      Client</a>
+    <a href="#" class="card-link" *ngIf="editMode == true" [routerLink]="['/client', 'detail', client.clientId]">Cancel</a>
+    <a href="#" class="card-link" *ngIf="editMode == true" (click)="save()">Save Client</a>
+    <a href="#" class="card-link" *ngIf="client.status === 'ACTIVE'" (click)="lockClient()">Lock Client</a>
+    <a href="#" class="card-link" *ngIf="client.status === 'LOCKED'" (click)="enableClient()">Enable Client</a>
+  </div>
+</div>

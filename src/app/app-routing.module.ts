@@ -23,16 +23,14 @@ const routes: Routes = [
     path: 'client', children: [
     {path: '', pathMatch: 'full', component: ClientComponent, canActivate: [LoginGuard]},
     {path: 'create', component: CreateClientComponent, canActivate: [LoginGuard]},
-    {path: 'detail/:clientId', component: DetailClientComponent, canActivate: [LoginGuard]},
-    {path: 'edit/:clientId', component: EditClientComponent, canActivate: [LoginGuard]}
+    {path: ':mode/:clientId', component: EditClientComponent, canActivate: [LoginGuard]}
   ]
   },
   {
     path: 'user', children: [
     {path: '', pathMatch: 'full', component: UserComponent, canActivate: [LoginGuard]},
     {path: 'create', component: CreateUserComponent, canActivate: [LoginGuard]},
-    {path: 'detail/:clientId', component: DetailUserComponent, canActivate: [LoginGuard]},
-    {path: 'edit/:clientId', component: EditUserComponent, canActivate: [LoginGuard]}
+    {path: ':mode/:clientId', component: EditUserComponent, canActivate: [LoginGuard]}
   ]
   },
   {path: 'scope', component: ScopeComponent, canActivate: [LoginGuard]},

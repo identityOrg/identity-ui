@@ -30,4 +30,36 @@ export class ClientService {
     return this.http.get<Client[]>(environment.apiBase + '/api/client',
       {headers: this.loginService.getSecurityHeader(), params: param, observe: 'body'});
   }
+
+  getClient(clientId: string): Observable<Client> {
+    return this.http.get<Client>(environment.apiBase + '/api/client/' + clientId, {
+      headers: this.loginService.getSecurityHeader(),
+      observe: 'body'
+    });
+  }
+
+  edit(client: Client): Observable<Client> {
+    return this.http.put<Client>(environment.apiBase + '/api/client/' + client.clientId, client, {
+      headers: this.loginService.getSecurityHeader(),
+      observe: 'body'
+    });
+  }
+
+  lock(clientId: string): Observable<Client> {
+    return this.http.post<Client>(environment.apiBase + '/api/client/' + clientId + '/status',
+      {status: 'LOCKED'},
+      {
+        headers: this.loginService.getSecurityHeader(),
+        observe: 'body'
+      });
+  }
+
+  enable(clientId: string): Observable<Client> {
+    return this.http.post<Client>(environment.apiBase + '/api/client/' + clientId + '/status',
+      {status: 'ACTIVE'},
+      {
+        headers: this.loginService.getSecurityHeader(),
+        observe: 'body'
+      });
+  }
 }
