@@ -62,4 +62,13 @@ export class ClientService {
         observe: 'body'
       });
   }
+
+  create(client: Client): Observable<Client> {
+    return this.http.post<Client>(environment.apiBase + '/api/client',
+      client,
+      {
+        headers: this.loginService.getSecurityHeader(),
+        observe: 'body'
+      });
+  }
 }

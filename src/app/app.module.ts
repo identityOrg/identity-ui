@@ -10,7 +10,6 @@ import {HomeComponent} from './pages/home/home.component';
 import {AppRoutingModule} from './app-routing.module';
 import {ClientComponent} from './pages/client/client.component';
 import {EditClientComponent} from './pages/client/edit-client/edit-client.component';
-import {DetailClientComponent} from './pages/client/detail-client/detail-client.component';
 import {CreateClientComponent} from './pages/client/create-client/create-client.component';
 import {UserComponent} from './pages/user/user.component';
 import {EditUserComponent} from './pages/user/edit-user/edit-user.component';
@@ -36,7 +35,6 @@ import {AddScopeDialogComponent} from './pages/client/add-scope-dialog/add-scope
     HomeComponent,
     ClientComponent,
     EditClientComponent,
-    DetailClientComponent,
     CreateClientComponent,
     UserComponent,
     EditUserComponent,

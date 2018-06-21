@@ -1,8 +1,6 @@
 <div class="card" style="width: 100%">
   <div class="card-body">
-    <h5 class="card-title" *ngIf="editMode == false">Show Client <span
-      [class]="client.status === 'ACTIVE'? 'dot-active': 'dot-inactive'"></span></h5>
-    <h5 class="card-title" *ngIf="editMode">Edit Client <span
+    <h5 class="card-title">{{client.clientName}} <span
       [class]="client.status === 'ACTIVE'? 'dot-active': 'dot-inactive'"></span></h5>
     <p class="card-text" *ngIf="editMode == false">Display Client details</p>
     <p class="card-text" *ngIf="editMode">Edit Client details</p>
@@ -86,6 +84,9 @@
     </mat-tab>
   </mat-tab-group>
   <div class="card-body">
+    <button mat-icon-button color="accent" routerLink="/client">
+      <mat-icon>replay</mat-icon>
+    </button>
     <a href="#" class="card-link" *ngIf="editMode == false" [routerLink]="['/client', 'edit', client.clientId]">Edit
       Client</a>
     <a href="#" class="card-link" *ngIf="editMode == true"
