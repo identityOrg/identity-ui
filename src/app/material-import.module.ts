@@ -5,9 +5,9 @@ import {
   MatCardModule, MatCheckboxModule, MatDialogModule, MatGridListModule,
   MatIconModule,
   MatInputModule, MatListModule,
-  MatPaginatorModule, MatSlideToggleModule,
+  MatPaginatorModule, MatSelectModule, MatSlideToggleModule,
   MatSortModule,
-  MatTableModule
+  MatTableModule, MatTabsModule
 } from '@angular/material';
 import {CdkTableModule} from '@angular/cdk/table';
 
@@ -26,7 +26,9 @@ import {CdkTableModule} from '@angular/cdk/table';
     MatGridListModule,
     MatListModule,
     MatCheckboxModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatTabsModule,
+    MatSelectModule
   ],
   exports: [
     CommonModule,
@@ -42,7 +44,9 @@ import {CdkTableModule} from '@angular/cdk/table';
     MatGridListModule,
     MatListModule,
     MatCheckboxModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatTabsModule,
+    MatSelectModule
   ],
   declarations: []
 })

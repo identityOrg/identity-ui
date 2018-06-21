@@ -25,6 +25,7 @@ import {MaterialImportModule} from './material-import.module';
 import {EditScopeComponent} from './pages/scope/edit-scope/edit-scope.component';
 import {FormsModule} from '@angular/forms';
 import {ConfirmDialogComponent} from './confirm-dialog/confirm-dialog.component';
+import {AddScopeDialogComponent} from './pages/client/add-scope-dialog/add-scope-dialog.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import {ConfirmDialogComponent} from './confirm-dialog/confirm-dialog.component'
     ScopeComponent,
     PageNotFoundComponent,
     EditScopeComponent,
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
+    AddScopeDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -58,7 +60,7 @@ import {ConfirmDialogComponent} from './confirm-dialog/confirm-dialog.component'
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [EditScopeComponent, ConfirmDialogComponent]
+  entryComponents: [EditScopeComponent, ConfirmDialogComponent, AddScopeDialogComponent]
 })
 export class AppModule {
 }

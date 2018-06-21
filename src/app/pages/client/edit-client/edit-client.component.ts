@@ -2,8 +2,10 @@ import {Component, OnInit} from '@angular/core';
 import {Client} from '../../../model/client';
 import {ClientService} from '../../../service/client.service';
 import {ActivatedRoute, Router} from '@angular/router';
-import {MatDialog} from '@angular/material';
+import {MatDialog, MatTableDataSource} from '@angular/material';
 import {ConfirmDialogComponent} from '../../../confirm-dialog/confirm-dialog.component';
+import {Scope} from '../../../model/scope';
+import {AddScopeDialogComponent} from '../add-scope-dialog/add-scope-dialog.component';
 
 @Component({
   selector: 'app-edit-client',
@@ -16,6 +18,9 @@ export class EditClientComponent implements OnInit {
   editMode = false;
   client = {} as Client;
 
+  scopeColumns = ['scopeId', 'scopeName', 'actions'];
+  scopeDS: MatTableDataSource<Scope> = null;
+
   constructor(private clientService: ClientService,
               private activeRoute: ActivatedRoute,
               private router: Router,
@@ -27,7 +32,7 @@ export class EditClientComponent implements OnInit {
       .subscribe(pMap => {
         this.clientService.getClient(pMap.get('clientId'))
           .subscribe(data => {
-            this.client = data;
+            this.setClientData(data);
           });
         const mode = pMap.get('mode');
         if ('detail' === mode) {
@@ -40,10 +45,15 @@ export class EditClientComponent implements OnInit {
       });
   }
 
+  private setClientData(data) {
+    this.client = data;
+    this.scopeDS = new MatTableDataSource(data.scopes);
+  }
+
   save() {
     this.clientService.edit(this.client)
       .subscribe(data => {
-        this.client = data;
+        this.setClientData(data);
         this.router.navigateByUrl('/client/detail/' + data.clientId);
       });
     return false;
@@ -61,7 +71,7 @@ export class EditClientComponent implements OnInit {
         if (result) {
           this.clientService.lock(this.client.clientId)
             .subscribe(data => {
-              this.client = data;
+              this.setClientData(data);
             });
         }
       });
@@ -80,10 +90,32 @@ export class EditClientComponent implements OnInit {
         if (result) {
           this.clientService.enable(this.client.clientId)
             .subscribe(data => {
-              this.client = data;
+              this.setClientData(data);
             });
         }
       });
     return false;
+  }
+
+  deleteScope(scopeId: string) {
+    this.client.scopes = this.client.scopes.filter(obj => obj.scopeId !== scopeId);
+    this.scopeDS = new MatTableDataSource(this.client.scopes);
+  }
+
+  addScope() {
+    this.matDialog.open(AddScopeDialogComponent, {})
+      .afterClosed()
+      .subscribe(result => {
+        if (result) {
+          if (!this.client.scopes) {
+            this.client.scopes = [];
+          }
+          const exists = this.client.scopes.filter(s => s.scopeId === result.scopeId).length;
+          if (!exists) {
+            this.client.scopes.push(result);
+            this.scopeDS = new MatTableDataSource(this.client.scopes);
+          }
+        }
+      });
   }
 }
