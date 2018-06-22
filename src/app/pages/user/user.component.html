@@ -15,65 +15,49 @@
             <span>Available Users</span>
           </mat-card-title>
           <mat-card-content>
-            <div class="mat-elevation-z8">
-              <table mat-table [dataSource]="dataSource" class="main-table">
+            <table mat-table [dataSource]="dataSource" class="main-table">
 
-                <!-- Position Column -->
-                <ng-container matColumnDef="username">
-                  <th mat-header-cell *matHeaderCellDef> Username</th>
-                  <td mat-cell *matCellDef="let element"> {{element.username}}</td>
-                </ng-container>
+              <!-- Position Column -->
+              <ng-container matColumnDef="username">
+                <th mat-header-cell *matHeaderCellDef> Username</th>
+                <td mat-cell *matCellDef="let element">
+                  <a href="" [routerLink]="['/user', 'detail', element.username]"> {{element.username}}</a>
+                </td>
+              </ng-container>
 
-                <!-- Name Column -->
-                <ng-container matColumnDef="firstName">
-                  <th mat-header-cell *matHeaderCellDef> First Name</th>
-                  <td mat-cell *matCellDef="let element"> {{element.firstName}}</td>
-                </ng-container>
+              <!-- Name Column -->
+              <ng-container matColumnDef="firstName">
+                <th mat-header-cell *matHeaderCellDef> First Name</th>
+                <td mat-cell *matCellDef="let element"> {{element.firstName}}</td>
+              </ng-container>
 
-                <!-- Weight Column -->
-                <ng-container matColumnDef="status">
-                  <th mat-header-cell *matHeaderCellDef> Status</th>
-                  <td mat-cell *matCellDef="let element"> {{element.status}}</td>
-                </ng-container>
+              <!-- Weight Column -->
+              <ng-container matColumnDef="status">
+                <th mat-header-cell *matHeaderCellDef> Status</th>
+                <td mat-cell *matCellDef="let element"> <span
+                  [class]="element.status === 'ACTIVE'? 'dot-active': 'dot-inactive'"></span></td>
+              </ng-container>
 
-                <!-- Symbol Column -->
-                <ng-container matColumnDef="lastName">
-                  <th mat-header-cell *matHeaderCellDef> Last Name</th>
-                  <td mat-cell *matCellDef="let element"> {{element.lastName}}</td>
-                </ng-container>
+              <!-- Symbol Column -->
+              <ng-container matColumnDef="lastName">
+                <th mat-header-cell *matHeaderCellDef> Last Name</th>
+                <td mat-cell *matCellDef="let element"> {{element.lastName}}</td>
+              </ng-container>
 
-                <!-- Symbol Column -->
-                <ng-container matColumnDef="admin">
-                  <th mat-header-cell *matHeaderCellDef> Admin</th>
-                  <td mat-cell *matCellDef="let element"> {{element.admin}}</td>
-                </ng-container>
+              <!-- Symbol Column -->
+              <ng-container matColumnDef="admin">
+                <th mat-header-cell *matHeaderCellDef> Admin</th>
+                <td mat-cell *matCellDef="let element">
+                  <mat-icon *ngIf="element.admin" color="accent">done</mat-icon>
+                  <mat-icon *ngIf="element.admin == false" color="accent">clear</mat-icon>
+                </td>
+              </ng-container>
 
-                <!-- Symbol Column -->
-                <ng-container matColumnDef="actions">
-                  <th mat-header-cell *matHeaderCellDef></th>
-                  <td mat-cell *matCellDef="let element">
-                    <button mat-icon-button color="accent" [routerLink]="['/user', 'edit', element.username]">
-                      <mat-icon>edit</mat-icon>
-                    </button>
-                  </td>
-                </ng-container>
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef='let row; columns: displayedColumns;'></tr>
+            </table>
 
-                <!-- Symbol Column -->
-                <ng-container matColumnDef="show">
-                  <th mat-header-cell *matHeaderCellDef></th>
-                  <td mat-cell *matCellDef="let element">
-                    <button mat-icon-button color="accent" [routerLink]="['/user', 'detail', element.username]">
-                      <mat-icon>pageview</mat-icon>
-                    </button>
-                  </td>
-                </ng-container>
-
-                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                <tr mat-row *matRowDef='let row; columns: displayedColumns;'></tr>
-              </table>
-
-              <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
-            </div>
+            <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
           </mat-card-content>
           <mat-card-actions>
             <div class="button-row">

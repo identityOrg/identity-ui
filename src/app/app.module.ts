@@ -13,7 +13,6 @@ import {EditClientComponent} from './pages/client/edit-client/edit-client.compon
 import {CreateClientComponent} from './pages/client/create-client/create-client.component';
 import {UserComponent} from './pages/user/user.component';
 import {EditUserComponent} from './pages/user/edit-user/edit-user.component';
-import {DetailUserComponent} from './pages/user/detail-user/detail-user.component';
 import {CreateUserComponent} from './pages/user/create-user/create-user.component';
 import {LogoutComponent} from './pages/logout/logout.component';
 import {CallbackComponent} from './security/callback/callback.component';
@@ -38,7 +37,6 @@ import {AddScopeDialogComponent} from './pages/client/add-scope-dialog/add-scope
     CreateClientComponent,
     UserComponent,
     EditUserComponent,
-    DetailUserComponent,
     CreateUserComponent,
     LogoutComponent,
     CallbackComponent,

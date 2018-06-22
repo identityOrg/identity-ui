@@ -1,13 +1,48 @@
-<!-- Page Content -->
-<div id="page-wrapper">
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-lg-12">
-        <h1 class="page-header">Create New User</h1>
-      </div>
-      <!-- /.col-lg-12 -->
-    </div>
-    <!-- /.row -->
+<div class="card" style="width: 100%">
+  <div class="card-body">
+    <h5 class="card-title">{{user.username}} <span
+      [class]="user.status === 'ACTIVE'? 'dot-active': 'dot-inactive'"></span></h5>
+    <p class="card-text" *ngIf="editMode == false">Display User details</p>
+    <p class="card-text" *ngIf="editMode">Edit Client details</p>
   </div>
-  <!-- /.container-fluid -->
+  <mat-tab-group>
+    <mat-tab label="General">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Username" [(ngModel)]="user.username">
+          </mat-form-field>
+        </li>
+        <li class="list-group-item">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="First Name" [(ngModel)]="user.firstName">
+          </mat-form-field>
+        </li>
+        <li class="list-group-item">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Last Name" [(ngModel)]="user.lastName">
+          </mat-form-field>
+        </li>
+      </ul>
+    </mat-tab>
+    <mat-tab label="Advanced">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <mat-slide-toggle [(ngModel)]="user.admin">
+            {{user.admin?'Admin':'Not an Admin'}}
+          </mat-slide-toggle>
+        </li>
+        <li class="list-group-item">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Expiry Date" type="datetime-local"
+                   [(ngModel)]="user.expiryDate">
+          </mat-form-field>
+        </li>
+      </ul>
+    </mat-tab>
+  </mat-tab-group>
+  <div class="card-body">
+    <a href="#" class="card-link" [routerLink]="['/user']">Cancel</a>
+    <a href="#" class="card-link" (click)="save()">Save User</a>
+  </div>
 </div>

@@ -30,7 +30,55 @@ export class UserService {
         param.set('username', criteria.username);
       }
     }
-    return this.http.get<User[]>(environment.apiBase + '/api/user',
-      {headers: this.loginService.getSecurityHeader(), params: param, observe: 'body'});
+    return this.http.get<User[]>(environment.apiBase + '/api/user', {
+      headers: this.loginService.getSecurityHeader(),
+      params: param,
+      observe: 'body'
+    });
+  }
+
+  getUser(username: string): Observable<User> {
+    return this.http.get<User>(environment.apiBase + '/api/user/' + username, {
+      headers: this.loginService.getSecurityHeader(),
+      observe: 'body'
+    });
+  }
+
+  edit(user: User): Observable<User> {
+    return this.http.put<User>(environment.apiBase + '/api/user/' + user.username, user, {
+      headers: this.loginService.getSecurityHeader(),
+      observe: 'body'
+    });
+  }
+
+
+  lock(username: string): Observable<User> {
+    return this.http.post<User>(environment.apiBase + '/api/user/' + username + '/status',
+      {status: 'LOCKED'},
+      {
+        headers: this.loginService.getSecurityHeader(),
+        observe: 'body'
+      });
+  }
+
+  enable(username: string, password: string): Observable<User> {
+    return this.http.post<User>(environment.apiBase + '/api/user/' + username + '/status',
+      {
+        status: 'ACTIVE',
+        password: password
+      },
+      {
+        headers: this.loginService.getSecurityHeader(),
+        observe: 'body'
+      });
+  }
+
+  create(user: User): Observable<User> {
+    return this.http.post<User>(environment.apiBase + '/api/user',
+      user,
+      {
+        headers: this.loginService.getSecurityHeader(),
+        observe: 'body'
+      });
   }
 }
