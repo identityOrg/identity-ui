@@ -24,6 +24,7 @@ import {EditScopeComponent} from './pages/scope/edit-scope/edit-scope.component'
 import {FormsModule} from '@angular/forms';
 import {ConfirmDialogComponent} from './confirm-dialog/confirm-dialog.component';
 import {AddScopeDialogComponent} from './pages/client/add-scope-dialog/add-scope-dialog.component';
+import {AuditComponent} from './pages/audit/audit.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import {AddScopeDialogComponent} from './pages/client/add-scope-dialog/add-scope
     PageNotFoundComponent,
     EditScopeComponent,
     ConfirmDialogComponent,
-    AddScopeDialogComponent
+    AddScopeDialogComponent,
+    AuditComponent
   ],
   imports: [
     BrowserModule,

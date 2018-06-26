@@ -13,6 +13,7 @@ import {UserComponent} from './pages/user/user.component';
 import {EditClientComponent} from './pages/client/edit-client/edit-client.component';
 import {CreateClientComponent} from './pages/client/create-client/create-client.component';
 import {ClientComponent} from './pages/client/client.component';
+import {AuditComponent} from './pages/audit/audit.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/dashboard', pathMatch: 'full'},
@@ -32,6 +33,7 @@ const routes: Routes = [
     ]
   },
   {path: 'scope', component: ScopeComponent, canActivate: [LoginGuard]},
+  {path: 'audit', component: AuditComponent, canActivate: [LoginGuard]},
   {path: 'logout', component: LogoutComponent, canActivate: [LogoutGuard]},
   {path: 'callback', component: CallbackComponent},
   {path: '**', component: PageNotFoundComponent, canActivate: [LoginGuard]}

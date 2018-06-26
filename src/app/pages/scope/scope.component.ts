@@ -1,7 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {ScopeService} from '../../service/scope.service';
 import {Scope} from '../../model/scope';
-import {MatDialog, MatDialogConfig, MatTableDataSource} from '@angular/material';
+import {MatDialog, MatDialogConfig, MatPaginator, MatTableDataSource} from '@angular/material';
 import {EditScopeComponent} from './edit-scope/edit-scope.component';
 
 @Component({
@@ -14,6 +14,8 @@ export class ScopeComponent implements OnInit {
   displayedColumns = ['scopeId', 'scopeName'];
   dataSource: MatTableDataSource<Scope> = null;
 
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+
   constructor(private scopeService: ScopeService, private dialog: MatDialog) {
   }
 
@@ -21,6 +23,7 @@ export class ScopeComponent implements OnInit {
     this.scopeService.listScopes(null)
       .subscribe(data => {
         this.dataSource = new MatTableDataSource<Scope>(data);
+        this.dataSource.paginator = this.paginator;
       }, err => {
         this.dataSource = null;
         console.log(err);
