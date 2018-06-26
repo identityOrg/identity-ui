@@ -11,7 +11,7 @@ import {EditScopeComponent} from './edit-scope/edit-scope.component';
 })
 export class ScopeComponent implements OnInit {
 
-  displayedColumns = ['scopeId', 'scopeName', 'actions'];
+  displayedColumns = ['scopeId', 'scopeName'];
   dataSource: MatTableDataSource<Scope> = null;
 
   constructor(private scopeService: ScopeService, private dialog: MatDialog) {
