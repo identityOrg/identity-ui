@@ -2,7 +2,8 @@ import {Authority} from './authority';
 
 export interface User {
   username: string;
-  status: string;
+  active: boolean;
+  locked: boolean;
   creationDate: Date;
   expiryDate: Date;
   passwordExpiryDate: Date;

@@ -32,10 +32,17 @@
               </ng-container>
 
               <!-- Weight Column -->
-              <ng-container matColumnDef="status">
-                <th mat-header-cell *matHeaderCellDef> Status</th>
+              <ng-container matColumnDef="active">
+                <th mat-header-cell *matHeaderCellDef> Active</th>
                 <td mat-cell *matCellDef="let element"> <span
-                  [class]="element.status === 'ACTIVE'? 'dot-active': 'dot-inactive'"></span></td>
+                  [class]="element.active? 'dot-active': 'dot-inactive'"></span></td>
+              </ng-container>
+
+              <!-- Weight Column -->
+              <ng-container matColumnDef="locked">
+                <th mat-header-cell *matHeaderCellDef> Locked</th>
+                <td mat-cell *matCellDef="let element"> <span
+                  [class]="element.locked? 'dot-inactive': 'dot-active'"></span></td>
               </ng-container>
 
               <!-- Symbol Column -->

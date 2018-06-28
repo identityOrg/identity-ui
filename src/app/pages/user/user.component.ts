@@ -10,7 +10,7 @@ import {MatPaginator, MatTableDataSource} from '@angular/material';
 })
 export class UserComponent implements OnInit {
 
-  displayedColumns = ['username', 'status', 'firstName', 'lastName', 'admin'];
+  displayedColumns = ['username', 'active', 'locked', 'firstName', 'lastName', 'admin'];
   dataSource: MatTableDataSource<User> = null;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;

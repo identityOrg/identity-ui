@@ -20,8 +20,11 @@ export class UserService {
       if (criteria.lastName) {
         param.set('lastName', criteria.lastName);
       }
-      if (criteria.status) {
-        param.set('status', criteria.status);
+      if (criteria.active) {
+        param.set('active', criteria.active.toString());
+      }
+      if (criteria.locked) {
+        param.set('locked', criteria.locked.toString());
       }
       if (criteria.admin) {
         param.set('admin', criteria.admin.toString());

@@ -1,7 +1,7 @@
 <div class="card" style="width: 100%">
   <div class="card-body">
     <h5 class="card-title">{{user.username}} <span
-      [class]="user.status === 'ACTIVE'? 'dot-active': 'dot-inactive'"></span></h5>
+      [class]="user.active? 'dot-active': 'dot-inactive'"></span></h5>
     <p class="card-text" *ngIf="editMode == false">Display User details</p>
     <p class="card-text" *ngIf="editMode">Edit Client details</p>
   </div>
@@ -60,7 +60,7 @@
     <a href="#" class="card-link" *ngIf="editMode == true"
        [routerLink]="['/user', 'detail', user.username]">Cancel</a>
     <a href="#" class="card-link" *ngIf="editMode == true" (click)="save()">Save User</a>
-    <a href="#" class="card-link" *ngIf="user.status === 'ACTIVE'" (click)="lockUser()">Lock User</a>
-    <a href="#" class="card-link" *ngIf="user.status === 'LOCKED'" (click)="enableUser()">Enable User</a>
+    <a href="#" class="card-link" *ngIf="user.active" (click)="lockUser()">Deactivate User</a>
+    <a href="#" class="card-link" *ngIf="user.active == false" (click)="enableUser()">Activate User</a>
   </div>
 </div>
