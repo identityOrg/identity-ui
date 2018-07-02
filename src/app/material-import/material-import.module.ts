@@ -2,12 +2,19 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {
   MatButtonModule,
-  MatCardModule, MatCheckboxModule, MatDialogModule, MatGridListModule,
+  MatCardModule,
+  MatCheckboxModule,
+  MatDialogModule,
+  MatGridListModule,
   MatIconModule,
-  MatInputModule, MatListModule,
-  MatPaginatorModule, MatSelectModule, MatSlideToggleModule,
+  MatInputModule,
+  MatListModule,
+  MatPaginatorModule,
+  MatSelectModule,
+  MatSlideToggleModule,
   MatSortModule,
-  MatTableModule, MatTabsModule
+  MatTableModule,
+  MatTabsModule
 } from '@angular/material';
 import {CdkTableModule} from '@angular/cdk/table';
 

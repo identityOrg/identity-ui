@@ -19,13 +19,13 @@ import {CallbackComponent} from './security/callback/callback.component';
 import {ScopeComponent} from './pages/scope/scope.component';
 import {PageNotFoundComponent} from './pages/page-not-found/page-not-found.component';
 import {ServiceModule} from './service/service.module';
-import {MaterialImportModule} from './material-import.module';
 import {EditScopeComponent} from './pages/scope/edit-scope/edit-scope.component';
 import {FormsModule} from '@angular/forms';
 import {ConfirmDialogComponent} from './confirm-dialog/confirm-dialog.component';
 import {AddScopeDialogComponent} from './pages/client/add-scope-dialog/add-scope-dialog.component';
 import {AuditComponent} from './pages/audit/audit.component';
 import {AuditDetailComponent} from './pages/audit/audit-detail/audit-detail.component';
+import {MaterialImportModule} from './material-import/material-import.module';
 
 @NgModule({
   declarations: [
