@@ -1,7 +1,8 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {MatPaginator, MatTableDataSource} from '@angular/material';
+import {MatDialog, MatDialogConfig, MatPaginator, MatTableDataSource} from '@angular/material';
 import {AuditService} from '../../service/audit.service';
 import {Audit} from '../../model/audit';
+import {AuditDetailComponent} from './audit-detail/audit-detail.component';
 
 @Component({
   selector: 'app-audit',
@@ -15,7 +16,7 @@ export class AuditComponent implements OnInit {
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor(private auditService: AuditService) {
+  constructor(private auditService: AuditService, private dialog: MatDialog) {
   }
 
   ngOnInit() {
@@ -29,4 +30,11 @@ export class AuditComponent implements OnInit {
       });
   }
 
+  showDetails(audit: Audit) {
+    const config = new MatDialogConfig();
+    config.data = {audit: audit};
+    config.closeOnNavigation = true;
+    this.dialog.open(AuditDetailComponent, config);
+    return false;
+  }
 }
