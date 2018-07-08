@@ -1,9 +1,7 @@
 <div class="card" style="width: 100%">
   <div class="card-body">
-    <h5 class="card-title">{{user.username}} <span
-      [class]="user.status === 'ACTIVE'? 'dot-active': 'dot-inactive'"></span></h5>
-    <p class="card-text" *ngIf="editMode == false">Display User details</p>
-    <p class="card-text" *ngIf="editMode">Edit Client details</p>
+    <h5 class="card-title">{{user.username||'New User'}} <span class="dot-inactive"></span></h5>
+    <p class="card-text">Create a new User</p>
   </div>
   <mat-tab-group>
     <mat-tab label="General">
