@@ -1,0 +1,7 @@
+.table tr td {
+  width: 25%;
+}
+
+.table tr td:nth-child(odd) {
+  text-align: right;
+}
