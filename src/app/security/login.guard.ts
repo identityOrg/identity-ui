@@ -1,22 +1,26 @@
 import {Injectable} from '@angular/core';
 import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot} from '@angular/router';
 import {Observable} from 'rxjs';
-import {LoginService} from '../service/login.service';
+import {OAuthService} from 'angular-oauth2-oidc';
 
 @Injectable()
 export class LoginGuard implements CanActivate {
 
-  constructor(private loginService: LoginService, private router: Router) {
+  constructor(private oauthService: OAuthService, private router: Router) {
   }
 
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
 
-    if (this.loginService.isLoggedIn()) {
+    console.log(this.oauthService.getAccessToken());
+    console.log(this.oauthService.getAccessTokenExpiration());
+    console.log(this.oauthService.getGrantedScopes());
+
+    if (this.oauthService.hasValidAccessToken()) {
       return true;
     } else {
-      this.loginService.redirectForLogin();
+      this.oauthService.initImplicitFlow();
       return false;
     }
   }

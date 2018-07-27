@@ -1,6 +1,5 @@
 import {Injectable} from '@angular/core';
 import {environment} from '../../environments/environment';
-import {LoginService} from './login.service';
 import {HttpClient, HttpParams} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Client} from '../model/client';
@@ -8,7 +7,7 @@ import {Client} from '../model/client';
 @Injectable()
 export class ClientService {
 
-  constructor(private http: HttpClient, private loginService: LoginService) {
+  constructor(private http: HttpClient) {
   }
 
   listClients(criteria: Client): Observable<Client[]> {
@@ -28,19 +27,17 @@ export class ClientService {
       }
     }
     return this.http.get<Client[]>(environment.apiBase + '/api/client',
-      {headers: this.loginService.getSecurityHeader(), params: param, observe: 'body'});
+      {params: param, observe: 'body'});
   }
 
   getClient(clientId: string): Observable<Client> {
     return this.http.get<Client>(environment.apiBase + '/api/client/' + clientId, {
-      headers: this.loginService.getSecurityHeader(),
       observe: 'body'
     });
   }
 
   edit(client: Client): Observable<Client> {
     return this.http.put<Client>(environment.apiBase + '/api/client/' + client.clientId, client, {
-      headers: this.loginService.getSecurityHeader(),
       observe: 'body'
     });
   }
@@ -49,7 +46,6 @@ export class ClientService {
     return this.http.post<Client>(environment.apiBase + '/api/client/' + clientId + '/status',
       {status: 'LOCKED'},
       {
-        headers: this.loginService.getSecurityHeader(),
         observe: 'body'
       });
   }
@@ -58,7 +54,6 @@ export class ClientService {
     return this.http.post<Client>(environment.apiBase + '/api/client/' + clientId + '/status',
       {status: 'ACTIVE'},
       {
-        headers: this.loginService.getSecurityHeader(),
         observe: 'body'
       });
   }
@@ -67,7 +62,6 @@ export class ClientService {
     return this.http.post<Client>(environment.apiBase + '/api/client',
       client,
       {
-        headers: this.loginService.getSecurityHeader(),
         observe: 'body'
       });
   }

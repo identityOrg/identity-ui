@@ -1,6 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
-import {LoginService} from '../../service/login.service';
 
 @Component({
   selector: 'app-callback',
@@ -9,24 +7,11 @@ import {LoginService} from '../../service/login.service';
 })
 export class CallbackComponent implements OnInit {
 
-  errorLogin = false;
-
-  constructor(private route: ActivatedRoute,
-              private loginService: LoginService,
-              private router: Router) {
+  constructor() {
   }
 
   ngOnInit() {
-    this.route.fragment
-      .subscribe((fragment: any) => {
-        this.loginService.login(fragment)
-          .subscribe(p => {
-            this.router.navigate(['dashboard']);
-          }, e => {
-            console.log('Failed to login ' + e);
-            this.errorLogin = true;
-          });
-      });
+
   }
 
 }

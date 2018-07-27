@@ -36,7 +36,7 @@ const routes: Routes = [
   {path: 'audit', component: AuditComponent, canActivate: [LoginGuard]},
   {path: 'logout', component: LogoutComponent, canActivate: [LogoutGuard]},
   {path: 'callback', component: CallbackComponent},
-  {path: '**', component: PageNotFoundComponent, canActivate: [LoginGuard]}
+  {path: '**', component: PageNotFoundComponent}
 ];
 
 @NgModule({

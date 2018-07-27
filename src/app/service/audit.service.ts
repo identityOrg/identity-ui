@@ -1,5 +1,4 @@
 import {Injectable} from '@angular/core';
-import {LoginService} from './login.service';
 import {HttpClient, HttpParams} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {environment} from '../../environments/environment';
@@ -8,7 +7,7 @@ import {Audit} from '../model/audit';
 @Injectable()
 export class AuditService {
 
-  constructor(private http: HttpClient, private loginService: LoginService) {
+  constructor(private http: HttpClient) {
   }
 
   searchAudits(criteria: Audit): Observable<Audit[]> {
@@ -36,7 +35,6 @@ export class AuditService {
         param.set('sessionId', criteria.sessionId);
       }
     }
-    return this.http.get<Audit[]>(environment.apiBase + '/api/audit',
-      {headers: this.loginService.getSecurityHeader(), params: param, observe: 'body'});
+    return this.http.get<Audit[]>(environment.apiBase + '/api/audit', {params: param, observe: 'body'});
   }
 }

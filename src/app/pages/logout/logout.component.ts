@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {LoginService} from '../../service/login.service';
+import {OAuthService} from 'angular-oauth2-oidc';
 
 @Component({
   selector: 'app-logout',
@@ -8,17 +8,17 @@ import {LoginService} from '../../service/login.service';
 })
 export class LogoutComponent implements OnInit {
 
-  constructor(private loginService: LoginService) {
+  constructor(private oauthService: OAuthService) {
   }
 
   ngOnInit() {
   }
 
   loginAgain() {
-    if (!this.loginService.isLoggedIn()) {
-      this.loginService.redirectForLogin();
-      return false;
+    if (!this.oauthService.hasValidAccessToken()) {
+      this.oauthService.initImplicitFlow();
     }
+    return false;
   }
 
 }

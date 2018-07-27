@@ -1,5 +1,6 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
+import {OAuthModule} from 'angular-oauth2-oidc';
 
 import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -56,7 +57,13 @@ import {MaterialImportModule} from './material-import/material-import.module';
     BrowserAnimationsModule,
     MaterialImportModule,
     ServiceModule,
-    FormsModule
+    FormsModule,
+    OAuthModule.forRoot({
+      resourceServer: {
+        allowedUrls: ['http://localhost:8080/api'],
+        sendAccessToken: true
+      }
+    })
   ],
   providers: [],
   bootstrap: [AppComponent],

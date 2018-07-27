@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {LoginService} from '../../service/login.service';
+import {OAuthService} from 'angular-oauth2-oidc';
 
 @Component({
   selector: 'app-side-nav',
@@ -8,7 +8,7 @@ import {LoginService} from '../../service/login.service';
 })
 export class SideNavComponent implements OnInit {
 
-  constructor(public loginService: LoginService) {
+  constructor(public oauthService: OAuthService) {
   }
 
   ngOnInit() {

@@ -1,6 +1,5 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpParams} from '@angular/common/http';
-import {LoginService} from './login.service';
 import {Observable} from 'rxjs';
 import {environment} from '../../environments/environment';
 import {User} from '../model/user';
@@ -8,7 +7,7 @@ import {User} from '../model/user';
 @Injectable()
 export class UserService {
 
-  constructor(private http: HttpClient, private loginService: LoginService) {
+  constructor(private http: HttpClient) {
   }
 
   listUsers(criteria: User): Observable<User[]> {
@@ -34,7 +33,6 @@ export class UserService {
       }
     }
     return this.http.get<User[]>(environment.apiBase + '/api/user', {
-      headers: this.loginService.getSecurityHeader(),
       params: param,
       observe: 'body'
     });
@@ -42,14 +40,12 @@ export class UserService {
 
   getUser(username: string): Observable<User> {
     return this.http.get<User>(environment.apiBase + '/api/user/' + username, {
-      headers: this.loginService.getSecurityHeader(),
       observe: 'body'
     });
   }
 
   edit(user: User): Observable<User> {
     return this.http.put<User>(environment.apiBase + '/api/user/' + user.username, user, {
-      headers: this.loginService.getSecurityHeader(),
       observe: 'body'
     });
   }
@@ -59,7 +55,6 @@ export class UserService {
     return this.http.post<User>(environment.apiBase + '/api/user/' + username + '/status',
       {status: 'LOCKED'},
       {
-        headers: this.loginService.getSecurityHeader(),
         observe: 'body'
       });
   }
@@ -71,7 +66,6 @@ export class UserService {
         password: password
       },
       {
-        headers: this.loginService.getSecurityHeader(),
         observe: 'body'
       });
   }
@@ -80,7 +74,6 @@ export class UserService {
     return this.http.post<User>(environment.apiBase + '/api/user',
       user,
       {
-        headers: this.loginService.getSecurityHeader(),
         observe: 'body'
       });
   }

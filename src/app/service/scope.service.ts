@@ -2,13 +2,12 @@ import {Injectable} from '@angular/core';
 import {Scope} from '../model/scope';
 import {Observable} from 'rxjs';
 import {HttpClient, HttpParams} from '@angular/common/http';
-import {LoginService} from './login.service';
 import {environment} from '../../environments/environment';
 
 @Injectable()
 export class ScopeService {
 
-  constructor(private http: HttpClient, private loginService: LoginService) {
+  constructor(private http: HttpClient) {
   }
 
   listScopes(criteria: Scope): Observable<Scope[]> {
@@ -22,26 +21,23 @@ export class ScopeService {
       }
     }
     return this.http.get<Scope[]>(environment.apiBase + '/api/scope',
-      {headers: this.loginService.getSecurityHeader(), params: param, observe: 'body'});
+      {params: param, observe: 'body'});
   }
 
   getScope(scopeId: string): Observable<Scope> {
     return this.http.get<Scope>(environment.apiBase + '/api/scope/' + scopeId, {
-      headers: this.loginService.getSecurityHeader(),
       observe: 'body'
     });
   }
 
   update(scope: Scope): Observable<Scope> {
     return this.http.put<Scope>(environment.apiBase + '/api/scope/' + scope.scopeId, scope, {
-      headers: this.loginService.getSecurityHeader(),
       observe: 'body'
     });
   }
 
   create(scope: Scope): Observable<Scope> {
     return this.http.post<Scope>(environment.apiBase + '/api/scope', scope, {
-      headers: this.loginService.getSecurityHeader(),
       observe: 'body'
     });
   }
